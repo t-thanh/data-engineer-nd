@@ -69,3 +69,56 @@ We cover ACID transactions in much depth in Lesson 2 of this course.
 ### [Demo 0](https://www.youtube.com/watch?v=QuC6xIj7WiI)
 
 ### [Demo 1](https://www.youtube.com/watch?v=OzNizL-Zjt8)
+
+## [NoSQL Databases](https://www.youtube.com/watch?v=0rVgi7NiHFQ)
+
+## [What is Apache Cassandra?](https://www.youtube.com/watch?v=ku8Ywgkduk8)
+
+**Common Questions**:
+
+- **What type of companies use Apache Cassandra?**
+
+All kinds of companies. For example, Uber uses Apache Cassandra for their entire backend. Netflix uses Apache Cassandra to serve all their videos to customers. Good use cases for NoSQL (and more specifically Apache Cassandra) are :
+
+1. Transaction logging (retail, health care)
+2. Internet of Things (IoT)
+3. Time series data
+4. Any workload that is heavy on writes to the database (since Apache Cassandra is optimized for writes).
+
+- **Would Apache Cassandra be a hindrance for my analytics work? If yes, why?**
+
+Yes, if you are trying to do analysis, such as using GROUP BY statements. Since Apache Cassandra requires data modeling based on the query you want, you can't do ad-hoc queries. However you can add clustering columns into your data model and create new tables.
+
+## [When to Use a NoSql Database](https://www.youtube.com/watch?v=jjwYgUEPSUc)
+
+## [When Not to Use a NoSql Database](https://www.youtube.com/watch?v=fT_USRXmtlo)
+- When you have a small dataset: NoSQL databases were made for big datasets not small datasets and while it works it wasn’t created for that.
+
+- When you need ACID Transactions: If you need a consistent database with ACID transactions, then most NoSQL databases will not be able to serve this need. NoSQL database are eventually consistent and do not provide ACID transactions. However, there are exceptions to it. Some non-relational databases like MongoDB can support ACID transactions.
+
+- When you need the ability to do JOINS across tables: NoSQL does not allow the ability to do JOINS. This is not allowed as this will result in full table scans.
+
+- If you want to be able to do aggregations and analytics
+
+- If you have changing business requirements : Ad-hoc queries are possible but difficult as the data model was done to fix particular queries
+
+- If your queries are not available and you need the flexibility : You need your queries in advance. If those are not available or you will need to be able to have flexibility on how you query your data you might need to stick with a relational database
+### Caveats to NoSQL and ACID Transactions
+
+There are some NoSQL databases that offer some form of ACID transaction. As of v4.0, MongoDB added multi-document ACID transactions within a single replica set. With their later version, v4.2, they have added multi-document ACID transactions in a sharded/partitioned deployment.
+
+- Check out this documentation from MongoDB on [multi-document ACID transactions](https://www.mongodb.com/collateral/mongodb-multi-document-acid-transactions)
+
+- Here is another link documenting [MongoDB's ability to handle ACID transactions](https://www.mongodb.com/blog/post/mongodb-multi-document-acid-transactions-general-availability)
+
+Another example of a NoSQL database supporting ACID transactions is MarkLogic.
+
+Check out this link from their [blog](https://www.marklogic.com/blog/how-marklogic-supports-acid-transactions/) that offers ACID transactions.
+
+## Demo 2: Creating table with Cassandra
+
+### [Part 1](https://www.youtube.com/watch?v=u-GlcpAndmY)
+### [Part 2](https://www.youtube.com/watch?v=QFYO0SqZMuw)
+### [Cassandra Documentation](http://cassandra.apache.org/doc/latest/getting_started/installing.html)
+
+## [Conclusion](https://www.youtube.com/watch?v=_II7WYiFslk)
