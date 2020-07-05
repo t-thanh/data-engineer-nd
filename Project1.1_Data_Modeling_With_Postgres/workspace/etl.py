@@ -6,19 +6,39 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    Process song json files from given filepath then insert data into songs and artists tables
+    @param cur: cursor to database connection
+    @param filepath: path to song json file
+    @returns: nothing
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
     # insert song record
-    song_data = list(df[["song_id", "title", "artist_id", "year", "duration"]].values[0])
+    song_data = list(df[["song_id", 
+                         "title", 
+                         "artist_id", 
+                         "year", 
+                         "duration"]].values[0])
     cur.execute(song_table_insert, song_data)
     
     # insert artist record
-    artist_data = list(df[["artist_id", "artist_name", "artist_location", "artist_latitude", "artist_longitude"]].values[0])
+    artist_data = list(df[["artist_id", 
+                           "artist_name", 
+                           "artist_location", 
+                           "artist_latitude", 
+                           "artist_longitude"]].values[0])
     cur.execute(artist_table_insert, artist_data)
 
 
 def process_log_file(cur, filepath):
+    """
+    Process log json files from given filepath then insert data into time, users and songplays tables
+    @param cur: cursor to database connection
+    @param filepath: path to log json file
+    @returns: nothing
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -29,8 +49,20 @@ def process_log_file(cur, filepath):
     t = pd.to_datetime(df['ts'], unit='ms')
     
     # insert time data records
-    time_data = (t.dt.time, t.dt.hour, t.dt.day, t.dt.weekofyear, t.dt.month, t.dt.year, t.dt.weekday)
-    column_labels = ('time', 'hour', 'day', 'weekofyear', 'month', 'year', 'weekday')
+    time_data = (t.dt.time, 
+                 t.dt.hour, 
+                 t.dt.day, 
+                 t.dt.weekofyear, 
+                 t.dt.month, 
+                 t.dt.year, 
+                 t.dt.weekday)
+    column_labels = ('time', 
+                     'hour', 
+                     'day', 
+                     'weekofyear', 
+                     'month', 
+                     'year', 
+                     'weekday')
     time_df = pd.DataFrame(dict(zip(column_labels, time_data))) 
 
     for i, row in time_df.iterrows():
@@ -56,11 +88,19 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-        songplay_data = (index, pd.Timestamp(row.ts).time(), row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
+        songplay_data = (pd.Timestamp(row.ts).time(), row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    Generate the json files list and call helper function to insert records into fact and dim tables
+    @param cur: cursor to database connection
+    @param conn: database connection
+    @param filepath: path to the root folder for json files
+    @param func: function to be applied on the json file
+    @returns: nothing
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -80,6 +120,9 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Set up database connection then insert records into fact and dim tables using song and log data files
+    """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
