@@ -1,0 +1,37 @@
+# Introduction to the Cloud and AWS
+
+## Lesson Introduction
+
+learn about the cloud infrastructure ecosystem and understand how to use essential tools for computing, storage, and analytics through one of the biggest providers of cloud computing, Amazon Web Services.
+
+## [Cloud Computing](https://www.youtube.com/watch?v=Eq3nFasSiqA)
+
+### What Is Cloud Computing?
+
+**Cloud computing**: the practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer.
+
+The arrival of cloud computing completely changed the way we deploy our technology, providing powerful access to instant and scalable computing power to enterprises, startups, and developers alike. Whether you need servers to host a web application, reliable storage for your data, or machines to train machine learning models, it's easy to see the advantage of relying on the cloud rather than utilizing your personal computer or local servers.
+
+For one, you no longer have to invest in lots of hardware upfront. No need to worry about whether you are paying for more than you'll need or what to do if you need to scale a lot more later on. Cloud computing makes this as easy and clicking a few buttons to scale your resources up or down.
+
+It's significantly faster provisioning the resources you need through the cloud versus the time it would take to gather and build up the hardware you'd need to provide the same support. This allows you and your team, or company, to develop and experiment at a much faster rate.
+
+Lastly, you can provide efficient access to your applications around the world by spreading your deployments to multiple regions.
+
+## [Amazon Web Services](https://www.youtube.com/watch?v=06IxCvhMhPw)
+
+Amazon Web Services is one of the largest providers in the cloud computing industry, with over 140 services in compute, storage, databases, networking, developer tools, security, and more. In this lesson, we'll learn about a few essential tools and services in AWS and practice using them. These services can be accessed in three different ways: the AWS Management Console, the Command Line Interface (CLI), or Software Development Kits (SDKs), which can be used in combination.
+
+We'll start with the AWS Management Console, which is the web user interface. The AWS CLI is a useful way to control and automate your services with code, and SDKs allow you to easily integrate services with your applications through APIs built around specific languages and platforms.
+
+## AWS Setup Instructions for Regular account
+## Monitoring your AWS costs
+## Create an IAM Role
+## Create Security Group
+## Launch a Redshift Cluster
+## Create an IAM User
+## Delete a Redshift Cluster
+## Create an S3 Bucket
+## Upload to S3 Bucket
+## Create PostgreSQL RDS
+## Avoid Paying Unexpected Costs for AWS
