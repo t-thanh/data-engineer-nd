@@ -33,6 +33,8 @@
 - Use the query editor to create a table and insert data.
 - Delete the cluster.
 
+**IMPORTANT NOTICE:** AWS UI is subject to change on a regular basis and we advise students to refer to AWS documentation. As of June 2020, the UI for setting up the Redshift cluster has slightly changed. You can find the updated documentation on building and launching a Redshift cluster [here](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-launch-sample-cluster.html).
+
 ## Exercise 1: Launch Redshift Cluster
 
 ### Launching a Redshift Cluster in the AWS Console
