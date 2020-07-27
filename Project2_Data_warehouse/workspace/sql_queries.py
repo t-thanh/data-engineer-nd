@@ -153,7 +153,7 @@ SELECT DISTINCT
     s_e.location    AS location,
     s_e.userAgent   AS user_agent
 FROM staging_events s_e
-JOIN staging_songs s_s ON s_s.title = s_e.song AND s_s.artist_name = s_e.artist;
+JOIN staging_songs s_s ON s_s.title = s_e.song AND s_s.artist_name = s_e.artist AND s_e.length = s_s.duration;
 """)
 
 user_table_insert = ("""
